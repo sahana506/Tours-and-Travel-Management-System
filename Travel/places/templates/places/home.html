@@ -1,0 +1,52 @@
+{% extends 'places/base.html' %}
+{% block 'body' %}
+{% load widget_tweaks %}
+
+<div class="container">
+<h2 style="color:green;">LETS TRAVEL!</h2>
+<h2 style="color:green;">{{ note }}</h2>
+{% if created_books_pk %}
+<a style="color:green" href="{% url 'edit_order' created_books_pk %}">Edit</a>
+<br>
+
+
+<h5 style="color:green"> Your Booking ID is : {{ idnumber }}</h5>
+
+
+
+
+{% endif %}
+<form action="{% url 'home' %}" method="post" novalidate>
+{% csrf_token %}
+<!--{{ bookform.as_p }}-->
+{% for field in bookform %}
+<div class ="form-group">
+{{ field.errors }}
+{{ field.label_tag }}
+{% render_field field class="form-control" %}
+{% endfor %}
+</div>
+<input type="submit",value="submit" >
+</form>
+
+<br><br>
+<h4 style="color:green">Wannna hang out with friends</h4>
+
+<form action="{% url 'orders' %}" method="get"> 
+{{ multiple_form }}
+<input type="submit" value="Book">
+</form>
+</div>
+
+<a style="color:green;" href="{% url 'history'  %}">HISTORY</a>
+{% endblock %}
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+
+
+
+
+
+
+

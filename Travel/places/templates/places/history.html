@@ -1,0 +1,13 @@
+{% extends 'places/base.html' %}
+{% block 'body' %}
+{% load widget_tweaks %}
+{% for history in history1 %}
+<p>
+<h6>{{ history.name }} has booked from
+
+{{ history.source }} to
+{{ history.dest}}</h6>
+</p>
+
+{% endfor %}
+{% endblock %}

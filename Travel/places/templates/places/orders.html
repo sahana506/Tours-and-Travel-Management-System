@@ -1,0 +1,23 @@
+{% extends 'places/base.html' %}
+{% block 'body' %}
+{% load widget_tweaks %}
+
+<div class="form-group">
+<h1>book for your loved ones</h1>
+<h2>{{ note }}</h2>
+
+<form action="{% url 'orders' %}" method="post">
+   
+{% csrf_token %}
+{{formset.management_form}}
+
+{%  for form in formset %}
+<div>
+{{ form }}
+{% endfor %}
+<input type="submit" value="submit">
+</div>
+</form>
+</div>
+
+{% endblock %}
